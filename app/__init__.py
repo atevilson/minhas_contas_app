@@ -37,5 +37,9 @@ def create_app():
         if current_user.is_authenticated:
             return redirect(url_for('expenses.dashboard'))
         return redirect(url_for('auth.login'))
+    
+    @app.before_first_request
+    def ensure_tables():
+        db.create_all()
 
     return app
