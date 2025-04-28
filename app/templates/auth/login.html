@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+
+{% block extra_head %}
+<style>
+  .login-wrapper {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .login-card {
+    width: 100%;
+    max-width: 350px;
+  }
+  .login-card .form-control:focus {
+    border-color: #808080;
+    box-shadow: 0 0 0 0.2rem rgba(27, 27, 27, 0.25);
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="login-wrapper">
+  <div class="login-card">
+    <h2 class="mb-4 text-center">Acessar minhas contas</h2>
+
+    <form method="POST">
+      {{ form.hidden_tag() }}
+
+      <div class="row mb-3 align-items-center">
+        <label for="{{ form.username.id }}" class="col-sm-4 col-form-label">Usuário</label>
+        <div class="col-sm-8">
+          {{ form.username(class="form-control") }}
+        </div>
+      </div>
+
+      <div class="row mb-4 align-items-center">
+        <label for="{{ form.password.id }}" class="col-sm-4 col-form-label">Senha</label>
+        <div class="col-sm-8">
+          {{ form.password(class="form-control") }}
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-sm-12">
+          {{ form.submit(class="btn btn-dark w-100") }}
+        </div>
+      </div>
+    </form>
+
+    <p class="text-center small">
+      Não tem conta?
+      <a href="{{ url_for('auth.register') }}"
+         class="text-decoration-none text-danger">
+        Cadastre-se
+      </a>
+    </p>
+  </div>
+</div>
+{% endblock %}

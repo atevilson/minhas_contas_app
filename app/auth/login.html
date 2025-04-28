@@ -1,0 +1,7 @@
+<form method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.username.label }} {{ form.username() }}
+    {{ form.password.label }} {{ form.password() }}
+    {{ form.submit(class="btn btn-primary") }}
+  </form>
+  <a href="{{ url_for('auth.register') }}">Cadastre-se</a>

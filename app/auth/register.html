@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Cadastro{% endblock %}
+{% block content %}
+<h2>Cadastre-se</h2>
+<form method="POST">
+  {{ form.hidden_tag() }}
+  {{ form.username.label }} {{ form.username(class="form-control") }}
+  {{ form.password.label }} {{ form.password(class="form-control") }}
+  {{ form.submit(class="btn btn-primary mt-3") }}
+</form>
+<p class="mt-2">Já tem conta? <a href="{{ url_for('auth.login') }}">Entre</a></p>
+{% endblock %}

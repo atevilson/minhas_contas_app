@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+
+{% block extra_head %}
+<style>
+  .dashboard-wrapper {
+    max-width: 900px;
+    margin: 2rem auto;
+  }
+  .controls {
+    gap: 1rem;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-wrapper">
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4 controls">
+    <h2 class="mb-3 mb-md-0 text-center text-md-start">Contas mês {{ mes }}</h2>
+
+    <div class="d-flex align-items-center">
+      <a href="{{ url_for('expenses.add_expense') }}" class="btn btn-danger">
+        Nova Conta
+      </a>
+      <form method="get" class="ms-md-3 mb-0">
+        <select name="mes"
+                onchange="this.form.submit()"
+                class="form-select">
+          {% for m in range(1,13) %}
+          <option value="{{ m }}" {% if m == mes %}selected{% endif %}>
+            {{ m | month_name }}
+          </option>
+          {% endfor %}
+        </select>
+      </form>
+    </div>
+  </div>
+
+  
+  <div class="table-responsive">
+    <style>
+      .table td, .table th {
+        padding-left: 14px;
+        padding-right: 16px;
+      }
+      .table th {
+    text-align: left;
+    }
+    </style>
+    <table class="table table-striped">
+      <thead class="table-light">
+        <tr>
+          <th>Origem</th>
+          <th>Vencimento</th>
+          <th>Valor/Parcela</th>
+          <th>Status</th>
+          <th>Quem paga</th>
+          <th>Tipo</th>
+          <th>Parcela</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for e in expenses %}
+        <tr>
+          <td>{{ e.origem }}</td>
+          <td>{{ e.vencimento.strftime('%d/%m/%Y') }}</td>
+          <td>R$ {{ '%.2f'|format(e.valor) }}</td>
+          <td>
+            {# Link usado apenas para alternar, mas sem estilo de link #}
+            {% if e.status == 'Pago' %}
+              <a href="{{ url_for('expenses.toggle_status', id=e.id, mes=mes) }}"
+                 class="text-success text-decoration-none">
+                Pago
+              </a>
+            {% else %}
+              <a href="{{ url_for('expenses.toggle_status', id=e.id, mes=mes) }}"
+                 class="text-danger text-decoration-none">
+                A pagar
+              </a>
+            {% endif %}
+          </td>
+          <td>{{ e.quem_paga or '-' }}</td>
+          <td>{{ e.tipo }}</td>
+          <td>{{ e.parcel_number }}/{{ e.parcelas }}</td>
+          <td>
+            <form method="POST"
+                  action="{{ url_for('expenses.delete_expense', id=e.id, mes=mes) }}"
+                  onsubmit="return confirm('Confirma exclusão desta conta ?');"
+                  style="display:inline">
+              <button type="submit"
+                      class="btn btn-lg-dark bootstrap-icons p-0"
+                      title="Excluir">
+                <i class="bi bi-trash"></i>
+              </button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      
+      <tfoot>
+        <tr>
+          <td colspan="2"><strong>Total</strong></td>
+          <td colspan="5"><strong>R$ {{ '%.2f'|format(total) }}</strong></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+{% endblock %}

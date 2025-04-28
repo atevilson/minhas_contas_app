@@ -1,0 +1,13 @@
+venv/
+.env
+
+app.db
+
+migrations/*.pyc
+migrations/__pycache__/
+
+*.py[cod]
+__pycache__/
+
+*.log
+instance/
