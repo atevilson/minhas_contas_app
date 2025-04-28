@@ -38,8 +38,7 @@ def create_app():
             return redirect(url_for('expenses.dashboard'))
         return redirect(url_for('auth.login'))
     
-    @app.before_first_request
-    def ensure_tables():
+    with app.app_context():
         db.create_all()
 
     return app
