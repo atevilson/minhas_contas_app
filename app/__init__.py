@@ -37,8 +37,5 @@ def create_app():
         if current_user.is_authenticated:
             return redirect(url_for('expenses.dashboard'))
         return redirect(url_for('auth.login'))
-    
-    with app.app_context():
-        db.create_all()
 
     return app
