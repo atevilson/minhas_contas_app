@@ -1,62 +1,36 @@
 {% extends 'base.html' %}
 {% block title %}Cadastro{% endblock %}
-
 {% block extra_head %}
 <style>
-  .login-wrapper { 
-    height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .login-card {
-    width: 100%;
-    max-width: 400px;
-  }
-  .login-card .form-control:focus {
+  .register-card .form-control:focus {
     border-color: #808080;
     box-shadow: 0 0 0 0.2rem rgba(27, 27, 27, 0.25);
   }
 </style>
 {% endblock %}
-
 {% block content %}
-<div class="login-wrapper">
-  <div class="login-card">
-    <h2 class="mb-4 text-center">Cadastre-se</h2>
-
-    <form method="POST">
-      {{ form.hidden_tag() }}
-
-      <div class="row mb-3 align-items-center">
-        <label for="{{ form.username.id }}" class="col-sm-4 col-form-label">
-          Usuário
-        </label>
-        <div class="col-sm-8">
-          {{ form.username(class="form-control") }}
-        </div>
-      </div>
-
-      <div class="row mb-4 align-items-center">
-        <label for="{{ form.password.id }}" class="col-sm-4 col-form-label">
-          Senha
-        </label>
-        <div class="col-sm-8">
-          {{ form.password(class="form-control") }}
-        </div>
-      </div>
-
-      <div class="row mb-3">
-        <div class="col-12">
+<div class="container h-100">
+  <div class="row justify-content-center align-items-center" style="height:80vh;">
+    <div class="col-12 col-md-8 col-lg-6">
+      <div class="card p-4 register-card">
+        <h2 class="text-center mb-4">Cadastre-se</h2>
+        <form method="POST">
+          {{ form.hidden_tag() }}
+          <div class="mb-3">
+            {{ form.username.label(class="form-label") }}
+            {{ form.username(class="form-control") }}
+          </div>
+          <div class="mb-4">
+            {{ form.password.label(class="form-label") }}
+            {{ form.password(class="form-control") }}
+          </div>
           {{ form.submit(class="btn btn-dark w-100") }}
-        </div>
+        </form>
+        <p class="text-center small mt-3">
+          Já tem conta? <a href="{{ url_for('auth.login') }}" class="text-danger text-decoration-none">Entre</a>
+        </p>
       </div>
-    </form>
-
-    <p class="text-center small">
-      Já tem conta? <a href="{{ url_for('auth.login') }}"
-      class="text-decoration-none text-danger">Entre</a>
-    </p>
+    </div>
   </div>
 </div>
 {% endblock %}
