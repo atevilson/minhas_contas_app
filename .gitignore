@@ -1,6 +1,6 @@
 venv/
 .env
-
+.vscode/
 app.db
 
 migrations/*.pyc
@@ -13,3 +13,5 @@ __pycache__/
 instance/
 .vercel
 .env
+
+config.py
