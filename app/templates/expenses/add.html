@@ -5,83 +5,101 @@
 <style>
   .form-wrapper {
     padding: 2rem 0;
-    display: flex;
-    justify-content: center;
   }
   .form-card {
     width: 100%;
+    /* você pode manter ou remover max-width, o grid já faz o trabalho */
     max-width: 600px;
   }
   .form-card .form-control:focus {
     border-color: #808080;
     box-shadow: 0 0 0 0.2rem rgba(27, 27, 27, 0.25);
   }
-
 </style>
 {% endblock %}
 
 {% block content %}
-<div class="form-wrapper">
-  <div class="form-card">
-    <h2 class="mb-4 text-center">Nova conta</h2>
-    <form method="POST">
-      {{ form.hidden_tag() }}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <div class="form-wrapper">
+        <div class="form-card">
+          <h2 class="mb-4 text-center">Nova conta</h2>
+          <form method="POST">
+            {{ form.hidden_tag() }}
 
-      <div class="row mb-3 align-items-center">
-        <label for="{{ form.origem.id }}" class="col-sm-4 col-form-label">Origem</label>
-        <div class="col-sm-8">
-          {{ form.origem(class="form-control") }}
+            <div class="row mb-3 align-items-center">
+              <label for="{{ form.origem.id }}" class="col-sm-4 col-form-label">
+                Origem
+              </label>
+              <div class="col-sm-8">
+                {{ form.origem(class="form-control") }}
+              </div>
+            </div>
+
+            <div class="row mb-3 align-items-center">
+              <label for="{{ form.vencimento.id }}" class="col-sm-4 col-form-label">
+                Vencimento
+              </label>
+              <div class="col-sm-8">
+                {{ form.vencimento(class="form-control") }}
+              </div>
+            </div>
+
+            <div class="row mb-3 align-items-center">
+              <label for="{{ form.valor.id }}" class="col-sm-4 col-form-label">
+                Valor total
+              </label>
+              <div class="col-sm-8">
+                {{ form.valor(class="form-control") }}
+              </div>
+            </div>
+
+            <div class="row mb-3 align-items-center">
+              <label for="{{ form.status.id }}" class="col-sm-4 col-form-label">
+                Status
+              </label>
+              <div class="col-sm-8">
+                {{ form.status(class="form-select") }}
+              </div>
+            </div>
+
+            <div class="row mb-3 align-items-center">
+              <label for="{{ form.quem_paga.id }}" class="col-sm-4 col-form-label">
+                Quem paga
+              </label>
+              <div class="col-sm-8">
+                {{ form.quem_paga(class="form-control") }}
+              </div>
+            </div>
+
+            <div class="row mb-3 align-items-center">
+              <label for="{{ form.tipo.id }}" class="col-sm-4 col-form-label">
+                Tipo
+              </label>
+              <div class="col-sm-8">
+                {{ form.tipo(class="form-control") }}
+              </div>
+            </div>
+
+            <div class="row mb-4 align-items-center">
+              <label for="{{ form.parcelas.id }}" class="col-sm-4 col-form-label">
+                Parcelas
+              </label>
+              <div class="col-sm-8">
+                {{ form.parcelas(class="form-control") }}
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12">
+                {{ form.submit(class="btn btn-dark btn-lg w-100") }}
+              </div>
+            </div>
+          </form>
         </div>
       </div>
-
-      <div class="row mb-3 align-items-center">
-        <label for="{{ form.vencimento.id }}" class="col-sm-4 col-form-label">Vencimento</label>
-        <div class="col-sm-8">
-          {{ form.vencimento(class="form-control") }}
-        </div>
-      </div>
-
-      <div class="row mb-3 align-items-center">
-        <label for="{{ form.valor.id }}" class="col-sm-4 col-form-label">Valor total</label>
-        <div class="col-sm-8">
-          {{ form.valor(class="form-control") }}
-        </div>
-      </div>
-
-      <div class="row mb-3 align-items-center">
-        <label for="{{ form.status.id }}" class="col-sm-4 col-form-label">Status</label>
-        <div class="col-sm-8">
-          {{ form.status(class="form-select") }}
-        </div>
-      </div>
-
-      <div class="row mb-3 align-items-center">
-        <label for="{{ form.quem_paga.id }}" class="col-sm-4 col-form-label">Quem paga</label>
-        <div class="col-sm-8">
-          {{ form.quem_paga(class="form-control") }}
-        </div>
-      </div>
-
-      <div class="row mb-3 align-items-center">
-        <label for="{{ form.tipo.id }}" class="col-sm-4 col-form-label">Tipo</label>
-        <div class="col-sm-8">
-          {{ form.tipo(class="form-control") }}
-        </div>
-      </div>
-
-      <div class="row mb-4 align-items-center">
-        <label for="{{ form.parcelas.id }}" class="col-sm-4 col-form-label">Parcelas</label>
-        <div class="col-sm-8">
-          {{ form.parcelas(class="form-control") }}
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-12">
-          {{ form.submit(class="btn btn-dark btn-lg w-100") }}
-        </div>
-      </div>
-    </form>
+    </div>
   </div>
 </div>
 {% endblock %}
