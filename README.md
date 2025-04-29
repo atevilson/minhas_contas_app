@@ -1,6 +1,6 @@
 # Minhas Contas App
 
-Uma aplicação web simples para controle de contas e despesas mensais, desenvolvida em Flask e Bootstrap, com banco de dados PostgreSQL gerenciado pelo Supabase e deploy automatizado no Vercel.
+Uma aplicação web simples para controle de contas e despesas mensais, desenvolvida em Python/Flask e Bootstrap, com banco de dados PostgreSQL gerenciado pelo Supabase e deploy automatizado no Vercel.
 
 ---
 
