@@ -5,6 +5,8 @@ from wtforms import (
 )
 from wtforms.validators import DataRequired, Length
 from wtforms.validators import InputRequired, NumberRange, Length
+from wtforms import DecimalField
+from wtforms.widgets import NumberInput
 
 class RegistrationForm(FlaskForm):
     username = StringField('Usuário',
@@ -24,7 +26,8 @@ class ExpenseForm(FlaskForm):
     origem     = StringField('Origem', validators=[DataRequired()])
     vencimento = DateField('Vencimento',
         format='%Y-%m-%d', validators=[DataRequired()])
-    valor      = FloatField('Valor', validators=[DataRequired()])
+    valor      = DecimalField('Valor', places=2, validators=[InputRequired(message="Informe um valor válido"), 
+        NumberRange(min=1, message="Não pode ser negativo")])
     status     = SelectField('Status',
         choices=[('Pago','Pago'),('A pagar','A pagar')])
     quem_paga  = StringField('Quem paga')
