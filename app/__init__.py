@@ -28,7 +28,7 @@ def create_app():
             return ''
 
     from app.auth.routes import auth as auth_bp
-    from app.expenses.routes import expenses as exp_bp
+    from app.expenses.routes import bp as exp_bp
     app.register_blueprint(auth_bp)
     app.register_blueprint(exp_bp)
 

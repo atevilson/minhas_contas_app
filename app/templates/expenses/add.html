@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Nova Despesa{% endblock %}
+{% block title %}{{ title or 'Nova Despesa' }}{% endblock %}
 
 {% block extra_head %}
 <style>
@@ -28,7 +28,7 @@
     <div class="col-12 col-md-8 col-lg-6">
       <div class="form-wrapper">
         <div class="form-card">
-          <h2 class="mb-4 text-center">Nova conta</h2>
+          <h2 class="mb-4 text-center">{{ title or 'Nova Conta' }}</h2>
           <form method="POST">
             {{ form.hidden_tag() }}
 
@@ -97,7 +97,7 @@
 
             <div class="row">
               <div class="col-12">
-                {{ form.submit(class="btn btn-dark btn-lg w-100") }}
+                {{ form.submit(class="btn btn-dark btn-lg w-100", value=submit_label or 'Cadastrar') }}
               </div>
             </div>
           </form>

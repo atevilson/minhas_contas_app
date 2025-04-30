@@ -83,7 +83,7 @@
               <td>
                 <form method="POST"
                       action="{{ url_for('expenses.delete_expense', id=e.id, mes=mes) }}"
-                      onsubmit="return confirm('Confirma exclusão desta conta ?');"
+                      onsubmit="return confirm('Confirma exclusão da conta {{e.origem}} ?');"
                       style="display:inline">
                   <button type="submit"
                           class="btn btn-lg-dark bootstrap-icons p-0"
@@ -91,6 +91,12 @@
                     <i class="bi bi-trash"></i>
                   </button>
                 </form>
+
+                <a href="{{ url_for('expenses.edit_expense', id=e.id, mes=mes) }}"
+                   class="btn btn-lg-dark bootstrap-icons p-0 ms-2"
+                   title="Editar">
+                  <i class="bi bi-pencil"></i>
+                </a>
               </td>
             </tr>
             {% endfor %}
