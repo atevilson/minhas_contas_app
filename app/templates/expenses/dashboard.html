@@ -13,11 +13,25 @@
   .table th {
     text-align: left;
   }
+  .welcome-bar h4{
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  .controls h2{
+    font-size: 1.4rem;
+  }
+  .form-select:focus {
+    border-color: #808080;
+    box-shadow: 0 0 0 0.2rem rgba(27, 27, 27, 0.25);
+  }
 </style>
 {% endblock %}
 
 {% block content %}
 <div class="container mt-4">
+
+  <div class="welcome-bar">
+    <h4>Bem-vindo, {{current_user.username}}  <i class="bi bi-cash-coin"></i></h4>
   <div class="row justify-content-center">
     <div class="col-12 col-md-10 col-lg-8">
 
@@ -64,7 +78,7 @@
               <td>{{ e.origem }}</td>
               <td>{{ e.vencimento.strftime('%d/%m/%Y') }}</td>
               <td>R$ {{ '%.2f'|format(e.valor) }}</td>
-              <td>
+              <td class="text-nowrap">
                 {% if e.status == 'Pago' %}
                   <a href="{{ url_for('expenses.toggle_status', id=e.id, mes=mes) }}"
                      class="text-success text-decoration-none">
@@ -78,9 +92,9 @@
                 {% endif %}
               </td>
               <td>{{ e.quem_paga or '-' }}</td>
-              <td>{{ e.tipo }}</td>
+              <td class="text-nowrap">{{ e.tipo }}</td>
               <td>{{ e.parcel_number }}/{{ e.parcelas }}</td>
-              <td>
+              <td class="text-nowrap">
                 <form method="POST"
                       action="{{ url_for('expenses.delete_expense', id=e.id, mes=mes) }}"
                       onsubmit="return confirm('Confirma exclusão da conta {{e.origem}} ?');"
