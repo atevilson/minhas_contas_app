@@ -1,3 +1,5 @@
+## [1.0.0] – 2025-04-30
+
 - feat: add welcome message and adjust style (atevilson)
 - feat: delete full parcel series, add edit logic, preserve total value input and include name in delete pop-up (atevilson)
 - docs: update README (atevilson)
