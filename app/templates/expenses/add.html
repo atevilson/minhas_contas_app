@@ -14,6 +14,10 @@
     border-color: #808080;
     box-shadow: 0 0 0 0.2rem rgba(27, 27, 27, 0.25);
   }
+  .form-select:focus {
+    border-color: #808080;
+    box-shadow: 0 0 0 0.2rem rgba(27, 27, 27, 0.25);
+  }
   input[type=number]::-webkit-inner-spin-button,
   input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -64,7 +68,7 @@
                 Status
               </label>
               <div class="col-sm-8">
-                {{ form.status(class="form-control") }}
+                {{ form.status(class="form-select") }}
               </div>
             </div>
 
@@ -82,7 +86,7 @@
                 Tipo
               </label>
               <div class="col-sm-8">
-                {{ form.tipo(class="form-control") }}
+                {{ form.tipo(class="form-select") }}
               </div>
             </div>
 
