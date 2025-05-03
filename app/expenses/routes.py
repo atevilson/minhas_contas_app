@@ -11,10 +11,13 @@ bp = Blueprint('expenses', __name__, url_prefix='/expenses')
 @login_required
 def dashboard():
     mes = request.args.get('mes', None, type=int) or datetime.utcnow().month
+    ano  = request.args.get('ano',  None, type=int) or datetime.utcnow().year
+
     expenses_list = (
         Expense.query
                .filter_by(user_id=current_user.id)
                .filter(db.extract('month', Expense.vencimento) == mes)
+               .filter(db.extract('year', Expense.vencimento) == ano)
                .order_by(Expense.vencimento)
                .all()
     )
@@ -25,6 +28,7 @@ def dashboard():
         'expenses/dashboard.html',
         expenses=expenses_list,
         mes=mes,
+        ano=ano,
         total=total
     )
 
