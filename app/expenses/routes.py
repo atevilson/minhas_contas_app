@@ -22,14 +22,16 @@ def dashboard():
                .all()
     )
 
-    total = sum(e.valor for e in expenses_list)
+    total_pago = sum(conta.valor for conta in expenses_list if conta.status == 'Pago')
+    total_a_pagar = sum(conta.valor for conta in expenses_list if conta.status == 'A pagar')
 
     return render_template(
         'expenses/dashboard.html',
         expenses=expenses_list,
         mes=mes,
         ano=ano,
-        total=total
+        total_pago=total_pago,
+        total_a_pagar=total_a_pagar
     )
 
 @bp.route('/add', methods=['GET','POST'])
