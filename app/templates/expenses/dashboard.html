@@ -24,6 +24,9 @@
     border-color: #808080;
     box-shadow: 0 0 0 0.2rem rgba(27, 27, 27, 0.25);
   }
+  tfoot tr:first-child td {
+    border-top: 2px solid #dee2e6;
+  }
 </style>
 {% endblock %}
 
@@ -128,8 +131,12 @@
           </tbody>
           <tfoot>
             <tr>
-              <td colspan="2"><strong>Total</strong></td>
-              <td colspan="5"><strong>R$ {{ '%.2f'|format(total) }}</strong></td>
+              <td colspan="2"><strong>Total a pagar</strong></td>
+              <td colspan="6" class="text-danger"><strong>R$ {{ '%.2f'|format(total_a_pagar) }}</strong></td>
+            </tr>
+            <tr>
+              <td colspan="2"><strong>Total pago</strong></td>
+              <td colspan="6" class="text-success"><strong>R$ {{ '%.2f'|format(total_pago) }}</strong></td>
             </tr>
           </tfoot>
         </table>
