@@ -44,16 +44,27 @@
           <a href="{{ url_for('expenses.add_expense') }}" class="btn btn-danger me-2">
             Nova Conta
           </a>
-          <form method="get" class="mb-0">
+          <form method="get" class="d-flex align-items-center mb-0">
             <select name="mes"
                     onchange="this.form.submit()"
-                    class="form-select">
+                    class="form-select me-2">
               {% for m in range(1,13) %}
               <option value="{{ m }}" {% if m == mes %}selected{% endif %}>
                 {{ m | month_name }}
               </option>
               {% endfor %}
             </select>
+
+            <select name="ano"
+            onchange="this.form.submit()"
+            class="form-select">
+      {% set ano_atual = ano %}
+      {% for y in range(ano_atual-1, ano_atual+2) %}
+      <option value="{{ y }}" {% if y == ano %}selected{% endif %}>
+        {{ y }}
+      </option>
+      {% endfor %}
+    </select>
           </form>
         </div>
       </div>
