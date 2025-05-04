@@ -60,7 +60,7 @@
           <tbody>
             {% for e in expenses %}
             <tr>
-              <td>{{ e.origem }}</td>
+              <td class="text-nowrap">{{ e.origem }}</td>
               <td>{{ e.vencimento.strftime('%d/%m/%Y') }}</td>
               <td>R$ {{ '%.2f'|format(e.valor) }}</td>
               <td class="text-nowrap">

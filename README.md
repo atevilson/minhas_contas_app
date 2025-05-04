@@ -1,16 +1,17 @@
 # Minhas Contas App
 
-Uma aplicação web simples para controle de contas e despesas mensais, desenvolvida em Python/Flask e Bootstrap, com banco de dados PostgreSQL gerenciado pelo Supabase e deploy automatizado no Vercel.
+Uma aplicação web simples desktop/mobile para controle de contas e despesas mensais, desenvolvida em Python/Flask e Bootstrap, com banco de dados PostgreSQL gerenciado pelo Supabase e deploy automatizado no Vercel.
 
 ---
 
 ## 🚀 Funcionalidades
 
 - 📋 **Cadastro de Usuários**: Registro e autenticação segura via Flask-Login.
-- 💰 **Gestão de Contas**: Criar, visualizar e excluir contas mensais (origem, vencimento, valor, status, quem paga, tipo, parcelas).
+- 💰 **Gestão de Contas**: Criar, visualizar, excluir e editar contas mensais (origem, vencimento, valor, status, quem paga, tipo, parcelas).
 - ✅ **Marcar como Pago**: Alternar status da conta entre "A pagar" e "Pago" diretamente na tabela.
-- 📅 **Filtro por Mês**: Selecionar o mês desejado para visualizar somente as contas daquele período.
-- 📊 **Total Mensal**: Cálculo automático do total em aberto e pago para o mês selecionado.
+- 📅 **Filtro por Mês e Ano**: Selecionar o mês desejado para visualizar somente as contas daquele período.
+- 📊 **Total a pagar**: Cálculo automático do total em aberto para o mês selecionado.
+- 📊 **Total pago**: Cálculo automático do total pago para o mês selecionado.
 - 📱 **Layout Responsivo**: Formulários e tabelas adaptáveis a diferentes tamanhos de tela usando grid e breakpoints do Bootstrap.
 
 ---
@@ -86,7 +87,7 @@ Uma aplicação web simples para controle de contas e despesas mensais, desenvol
 6. Inicie o servidor:
 
    ```bash
-   flask run
+   python manager.py
    ```
 
 7. Acesse `http://localhost:5000` no navegador.
@@ -101,4 +102,6 @@ Uma aplicação web simples para controle de contas e despesas mensais, desenvol
 
 ---
 
+### Autor
+---
  <sub><b>Atevilson Freitas</b></sub></a> <a href="">🧑‍💻</a>
