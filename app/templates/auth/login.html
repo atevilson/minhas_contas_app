@@ -26,12 +26,19 @@
           </div>
           {{ form.submit(class="btn btn-dark w-100") }}
         </form>
-        <p class="text-center small mt-3">
-          Não tem conta? 
-          <a href="{{ url_for('auth.register') }}" class="text-danger text-decoration-none">
-            Cadastre-se
-          </a>
-        </p>
+        <div class="text-center small mt-3">
+          {% if reset_mode %}
+            Esqueceu a senha? 
+            <a href="{{ url_for('auth.reset_password') }}" class="text-danger text-decoration-none">
+              Redefinir
+            </a>
+          {% else %}
+            Não tem conta?
+            <a href="{{ url_for('auth.register') }}" class="text-danger text-decoration-none">
+              Cadastre-se
+            </a>
+          {% endif %}
+        </div>
       </div>
     </div>
   </div>
