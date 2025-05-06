@@ -1,13 +1,10 @@
 from flask_wtf import FlaskForm 
 from wtforms import (
     StringField, PasswordField, SubmitField,
-    DateField, FloatField, SelectField, IntegerField
+    DateField, SelectField, IntegerField,
+    DecimalField
 )
-from wtforms.validators import DataRequired, Length
-from wtforms.validators import InputRequired, NumberRange, Length
-from wtforms import DecimalField
-from wtforms.widgets import NumberInput
-
+from wtforms.validators import DataRequired, Length, InputRequired, NumberRange, EqualTo
 class RegistrationForm(FlaskForm):
     username = StringField('Usuário',
         validators=[DataRequired(), Length(min=3, max=80)])
@@ -36,3 +33,15 @@ class ExpenseForm(FlaskForm):
     parcelas   = IntegerField('Número de parcelas', default=1,
         validators=[InputRequired(message="Informe 0 ou mais parcelas"), NumberRange(min=0, message="Não pode ser negativo")])
     submit     = SubmitField('Salvar')
+
+class ResetPasswordForm(FlaskForm):
+    username        = StringField('Usuário', validators=[DataRequired()])
+    new_password    = PasswordField('Nova senha', validators=[DataRequired()])
+    confirm_password= PasswordField(
+        'Confirmar senha',
+        validators=[
+            DataRequired(),
+            EqualTo('new_password', message='As senhas devem coincidir.')
+        ]
+    )
+    submit = SubmitField('Cadastrar')
